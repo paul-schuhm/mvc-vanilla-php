@@ -33,8 +33,6 @@ try {
     //Réponse au besoin du client
     $response = $controller->execute();
 
-    die;
-
     //Retourner la réponse au client
     http_response_code(200);
     echo $response;

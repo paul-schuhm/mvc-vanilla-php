@@ -29,6 +29,7 @@ class ArticleController
 
         //Préparer la présentation du résultat de l'opération métier
         $view = new SingleArticle($article);
+
         //La vue a la charge de préparer la réponse pour le client (mise en forme des résultats délivrés par le modèle/partie métier de l'application)
         return $view->getHtml();
     }

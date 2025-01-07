@@ -1,0 +1,15 @@
+{
+    "name": "paul/mvc-vanilla-php",
+    "autoload": {
+        "psr-4": {
+            "Paul\\MVC\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "p schuhmacher",
+            "email": "contact@pschuhmacher.com"
+        }
+    ],
+    "require": {}
+}

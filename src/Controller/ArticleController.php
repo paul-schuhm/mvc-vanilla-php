@@ -25,7 +25,9 @@ class ArticleController
         //Partie métier: retourner un article avec le titre demandé
 
         $title = $this->args['title'];
-        $article = new Article($title);
+
+        //Ici, il FAUT un titre
+        $article = Article::create($title);
 
         //Préparer la présentation du résultat de l'opération métier
         $view = new SingleArticle($article);

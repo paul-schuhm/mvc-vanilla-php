@@ -13,6 +13,7 @@ use \Paul\MVC\Router;
 set_exception_handler(function (Throwable $e) {
     //Fails gracefull
     http_response_code(500);
+    echo "Oups." ;
 });
 
 
@@ -40,6 +41,6 @@ try {
     //Aucune ressource exposée à cette URL, retourner une réponse 404
     http_response_code(404);
     //Message
-    // echo $e->getMessage();
-    echo "404 : La ressource demandée n'existe pas";
+    echo $e->getMessage();
+    // echo "404 : La ressource demandée n'existe pas";
 }

@@ -27,7 +27,12 @@ try {
     //getController lève une exception si aucun controlleur n'est trouvé
     $controller = $router->getController();
 
+    //Arrête l'execution du programme;
+    exit();
+    die;
+
     //Fabriquer la réponse (execution du code métier de l'application web)
+    //Réponse au besoin du client
     $reponse = $controller->execute();
 
     //Retourner la réponse au client

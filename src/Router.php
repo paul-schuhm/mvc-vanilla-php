@@ -8,4 +8,9 @@ namespace Paul\MVC;
  */
 class Router{
 
+    public function __construct()
+    {
+        
+    }
+
 }

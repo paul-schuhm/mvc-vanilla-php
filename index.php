@@ -28,7 +28,6 @@ try {
     $controller = $router->getController();
 
     //Arrête l'execution du programme;
-    exit();
     die;
 
     //Fabriquer la réponse (execution du code métier de l'application web)
@@ -42,5 +41,6 @@ try {
     //Aucune ressource exposée à cette URL, retourner une réponse 404
     http_response_code(404);
     //Message
+    // echo $e->getMessage();
     echo "404 : La ressource demandée n'existe pas";
 }

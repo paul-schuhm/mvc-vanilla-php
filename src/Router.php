@@ -3,6 +3,7 @@
 namespace Paul\MVC;
 
 use Exception;
+use Paul\MVC\Controller\ArticleController;
 
 /**
  * Le routeur de l'application, associe un controller à chaque endpoint
@@ -15,7 +16,7 @@ class Router
     //On range les ressources par méthode http
     public const ROUTES = [
         'GET' => [
-            '/articles' => 'Paul\\MVC\\Controller\\ArticleController'
+            '/articles' => 'Paul\\MVC\\Controller\\ArticleCont'
         ],
         'POST' => []
     ];
@@ -41,9 +42,16 @@ class Router
             throw new Exception("La ressource demandée n'existe pas");
         }
 
-        $controler = self::ROUTES[$httpMethod][$resource];
+        $controllerName = self::ROUTES[$httpMethod][$resource];
 
-        dump($controler);
+        //Instancier le controleur
+
+        if (!class_exists($controllerName))
+            throw new Exception("Le controleur n'existe pas");
+
+        $controller = new $controllerName();
+
+        return $controller;
     }
 
     public function __construct() {}

@@ -7,4 +7,10 @@ namespace Paul\MVC\Model;
  */
 class Article{
 
+    public function __construct(
+        private string $title
+    )
+    {
+        
+    }
 }

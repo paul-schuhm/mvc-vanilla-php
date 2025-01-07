@@ -16,21 +16,26 @@ set_exception_handler(function (Throwable $e) {
 });
 
 
-
-
 $router = new Router();
-
-$controller = $router->getController();
 
 /**Si un controleur est associé à cette endpoint
  *  - Passer le traitement de la requête au controller adéquat;
  *  - Retourner une page 404 sinon
  */
+try {
 
-//Fabriquer la réponse
-$reponse = $controller->execute();
+    //getController lève une exception si aucun controlleur n'est trouvé
+    $controller = $router->getController();
 
-//Retourner la réponse au client
-http_response_code(200);
+    //Fabriquer la réponse (execution du code métier de l'application web)
+    $reponse = $controller->execute();
 
-echo $response;
+    //Retourner la réponse au client
+    http_response_code(200);
+    echo $response;
+} catch (Exception $e) {
+    //Aucune ressource exposée à cette URL, retourner une réponse 404
+    http_response_code(404);
+    //Message
+    echo "404 : La ressource demandée n'existe pas";
+}

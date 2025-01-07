@@ -16,7 +16,7 @@ class Router
     //On range les ressources par méthode http
     public const ROUTES = [
         'GET' => [
-            '/articles' => 'Paul\\MVC\\Controller\\ArticleCont'
+            '/articles' => 'Paul\\MVC\\Controller\\ArticleController'
         ],
         'POST' => []
     ];
@@ -31,6 +31,7 @@ class Router
         //Découper l'URI en plusieurs parties (path, query)
         $parts = parse_url($_SERVER['REQUEST_URI']);
         //Découper la query part
+        parse_str($parts['query'], $args);
 
         //Vérifier que l'endpoint existe dans les ROUTES déclarées par l'application
         $resource = $parts['path'];
@@ -49,7 +50,9 @@ class Router
         if (!class_exists($controllerName))
             throw new Exception("Le controleur n'existe pas");
 
-        $controller = new $controllerName();
+        //Instancie le controleur et lui passer en arguments de son constructeur
+        //les données dont il a besoin pour faire son travail (données sur la requête)
+        $controller = new $controllerName($args);
 
         return $controller;
     }

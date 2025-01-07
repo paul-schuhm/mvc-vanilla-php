@@ -28,11 +28,12 @@ try {
     $controller = $router->getController();
 
     //Arrête l'execution du programme;
-    die;
 
     //Fabriquer la réponse (execution du code métier de l'application web)
     //Réponse au besoin du client
-    $reponse = $controller->execute();
+    $response = $controller->execute();
+
+    die;
 
     //Retourner la réponse au client
     http_response_code(200);

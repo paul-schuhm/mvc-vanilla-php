@@ -21,3 +21,5 @@ curl localhost:5001/articles?title=foo
 ~~~
 
 ## Références utiles
+
+- [Pattern MVC](https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur), article de Wikipédia. Voir section *Dans les applications web*;

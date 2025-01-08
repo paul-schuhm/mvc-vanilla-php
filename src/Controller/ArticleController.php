@@ -6,7 +6,7 @@ use Paul\MVC\Model\Article;
 use Paul\MVC\View\SingleArticle;
 
 /**
- * Controleur en charge des ressources liées aux articles
+ * Contrôleur en charge des ressources liées aux articles
  * Chef d'orchestre : mobilise le code métier, 
  * mobilise la vue pour présenter les résultats au client
  */
@@ -30,6 +30,8 @@ class ArticleController
         $article = Article::create($title);
 
         //Préparer la présentation du résultat de l'opération métier
+        //Remarque : ici on crée un couplage entre la vue et le modèle en passant directement l'objet métier Article
+        //On peut facilement éliminer ce couplage via des interfaces et/ou des value objects (représentation simple des données ou DTO)
         $view = new SingleArticle($article);
 
         //La vue a la charge de préparer la réponse pour le client (mise en forme des résultats délivrés par le modèle/partie métier de l'application)
